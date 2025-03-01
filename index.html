@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix Benzeri Film Sitesi</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">FilmDünyası</div>
+        <nav>
+            <ul>
+                <li><a href="#">Ana Sayfa</a></li>
+                <li><a href="#">Filmler</a></li>
+                <li><a href="#">Diziler</a></li>
+                <li><a href="#">Listem</a></li>
+            </ul>
+        </nav>
+        <div class="user-menu">
+            <i class="fas fa-search"></i>
+            <i class="fas fa-bell"></i>
+            <img src="user-avatar.jpg" alt="Kullanıcı Avatarı">
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <video autoplay muted loop id="hero-video">
+            <source src="hero-video.mp4" type="video/mp4">
+            Tarayıcınız video desteklemiyor.
+        </video>
+        <div class="hero-content">
+            <h1>Sınırsız Eğlence</h1>
+            <p>Binlerce film ve dizi bir tık uzağında.</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn"><i class="fas fa-play"></i> Hemen İzle</a>
+                <a href="#" class="btn btn-outline"><i class="fas fa-info-circle"></i> Daha Fazla Bilgi</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Film Listeleri -->
+    <section class="film-list">
+        <h2>Popüler Filmler</h2>
+        <div class="film-container">
+            <div class="film-card">
+                <img src="film1.jpg" alt="Film 1">
+                <div class="film-info">
+                    <h3>Film 1</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <a href="#" class="btn-watch">İzle</a>
+                </div>
+            </div>
+            <div class="film-card">
+                <img src="film2.jpg" alt="Film 2">
+                <div class="film-info">
+                    <h3>Film 2</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <a href="#" class="btn-watch">İzle</a>
+                </div>
+            </div>
+            <div class="film-card">
+                <img src="film3.jpg" alt="Film 3">
+                <div class="film-info">
+                    <h3>Film 3</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <a href="#" class="btn-watch">İzle</a>
+                </div>
+            </div>
+            <!-- Daha fazla film kartı ekleyebilirsiniz -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>FilmDünyası</h3>
+                <p>Oyun dünyasının kapılarını aralayın.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Bağlantılar</h3>
+                <ul>
+                    <li><a href="#">Ana Sayfa</a></li>
+                    <li><a href="#">Filmler</a></li>
+                    <li><a href="#">Diziler</a></li>
+                    <li><a href="#">Hakkımızda</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Sosyal Medya</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 FilmDünyası. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
