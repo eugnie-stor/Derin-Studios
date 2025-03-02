@@ -453,8 +453,8 @@
         <a href="#kayit">Kayıt Ol</a>
     </nav>
     <div class="search-bar">
-        <input type="text" placeholder="Film Ara...">
-        <button type="submit">Ara</button>
+        <input type="text" id="searchInput" placeholder="Film Ara...">
+        <button type="submit" onclick="searchMovie()">Ara</button>
     </div>
 
     <!-- Kullanıcı Profili -->
@@ -470,17 +470,24 @@
     
     <section class="movie-showcase section" id="filmler">
         <h2>Popüler Filmler</h2>
-        <div class="movie-list">
+        <div class="movie-list" id="movieList">
             <div class="movie-card">
                 <img src="movie1.jpg" alt="Film 1">
                 <h3>Başlangıç</h3>
                 <p>Rüyaların içinde yolculuk ve zihin hırsızlığı.</p>
+                <button onclick="watchMovie('Başlangıç')">İzle</button>
             </div>
             <div class="movie-card">
                 <img src="movie2.jpg" alt="Film 2">
                 <h3>Yüzüklerin Efendisi</h3>
                 <p>Orta Dünya'nın kaderini değiştirecek bir macera.</p>
+                <button onclick="watchMovie('Yüzüklerin Efendisi')">İzle</button>
             </div>
+        </div>
+        <div id="searchResult" style="display: none;">
+            <h3 id="resultTitle"></h3>
+            <p id="resultDescription"></p>
+            <button id="watchButton" style="display: none;">İzle</button>
         </div>
     </section>
     
@@ -505,11 +512,11 @@
     <section class="comments section" id="yorumlar">
         <h2>Yorumlar</h2>
         <div class="comment-form">
-            <input type="text" placeholder="Adınız" required>
-            <textarea placeholder="Yorumunuz" rows="3" required></textarea>
-            <button type="submit">Yorum Gönder</button>
+            <input type="text" id="commentName" placeholder="Adınız" required>
+            <textarea id="commentText" placeholder="Yorumunuz" rows="3" required></textarea>
+            <button type="submit" onclick="addComment()">Yorum Gönder</button>
         </div>
-        <div class="comments-list">
+        <div class="comments-list" id="commentsList">
             <div class="comment-item">
                 <h4>Ahmet Yılmaz</h4>
                 <p>Harika bir film sitesi! Özellikle "Başlangıç" filminin analizi çok başarılı.</p>
@@ -618,6 +625,60 @@
             }
         }
 
+        // Yorum ekleme fonksiyonu
+        function addComment() {
+            const commentName = document.getElementById('commentName').value;
+            const commentText = document.getElementById('commentText').value;
+
+            if (commentName && commentText) {
+                const commentsList = document.getElementById('commentsList');
+                const newComment = document.createElement('div');
+                newComment.classList.add('comment-item');
+                newComment.innerHTML = `
+                    <h4>${commentName}</h4>
+                    <p>${commentText}</p>
+                `;
+                commentsList.appendChild(newComment);
+                document.getElementById('commentName').value = '';
+                document.getElementById('commentText').value = '';
+            } else {
+                alert("Lütfen adınızı ve yorumunuzu girin.");
+            }
+        }
+
+        // Film arama fonksiyonu
+        function searchMovie() {
+            const searchInput = document.getElementById('searchInput').value.toLowerCase();
+            const movies = [
+                { title: "Başlangıç", description: "Rüyaların içinde yolculuk ve zihin hırsızlığı.", image: "movie1.jpg" },
+                { title: "Yüzüklerin Efendisi", description: "Orta Dünya'nın kaderini değiştirecek bir macera.", image: "movie2.jpg" }
+            ];
+
+            const result = movies.find(movie => movie.title.toLowerCase() === searchInput);
+            const searchResult = document.getElementById('searchResult');
+            const resultTitle = document.getElementById('resultTitle');
+            const resultDescription = document.getElementById('resultDescription');
+            const watchButton = document.getElementById('watchButton');
+
+            if (result) {
+                resultTitle.textContent = result.title;
+                resultDescription.textContent = result.description;
+                watchButton.style.display = 'block';
+                watchButton.onclick = () => watchMovie(result.title);
+                searchResult.style.display = 'block';
+            } else {
+                resultTitle.textContent = "Film bulunamadı.";
+                resultDescription.textContent = "";
+                watchButton.style.display = 'none';
+                searchResult.style.display = 'block';
+            }
+        }
+
+        // Film izleme fonksiyonu
+        function watchMovie(title) {
+            alert(`${title} filmini izliyorsunuz!`);
+        }
+
         // Sayfa yüklendiğinde profil bilgilerini güncelle
         window.addEventListener('load', updateProfile);
 
@@ -671,4 +732,4 @@
         }
     </script>
 </body>
-</html> DerinStudiosDerinStudiosDerinStudiosDerinStudiosDerinStudiosDerinStudiosDerinStudiosDerinStudiosDerinStudiosDerinStudiosDerinStudiosDerinStudiosDerinStudiosDerinStudiosDerinStudiosDerinStudiosDerinStudiosDerinStudiosDerinStudiosDerinStudios
+</html>
